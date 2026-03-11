@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>hhofner.com</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: #fff;
+      font-family: 'Courier New', monospace;
+    }
+
+    .domain {
+      font-size: 2.4rem;
+      color: #1a1a1a;
+      position: relative;
+      letter-spacing: 0.05em;
+      animation: base-glitch 3s infinite;
+    }
+
+    .domain::before,
+    .domain::after {
+      content: 'hhofner.com';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .domain::before {
+      color: rgba(255, 0, 80, 0.7);
+      animation: glitch-1 3s infinite;
+    }
+
+    .domain::after {
+      color: rgba(0, 120, 255, 0.7);
+      animation: glitch-2 3s infinite;
+    }
+
+    @keyframes base-glitch {
+      0%, 85%, 88%, 100% { transform: translate(0); }
+      86% { transform: translate(2px, -1px); }
+      87% { transform: translate(-1px, 1px); }
+    }
+
+    @keyframes glitch-1 {
+      0%, 85% { clip-path: inset(0 0 0 0); transform: translate(0); opacity: 0; }
+      86% { clip-path: inset(10% 0 30% 0); transform: translate(-4px, 0); opacity: 1; }
+      87% { clip-path: inset(50% 0 10% 0); transform: translate(4px, 0); opacity: 1; }
+      88% { clip-path: inset(20% 0 50% 0); transform: translate(-3px, 0); opacity: 1; }
+      89% { clip-path: inset(70% 0 5% 0); transform: translate(3px, 0); opacity: 1; }
+      90% { clip-path: inset(0 0 0 0); transform: translate(0); opacity: 0; }
+      91%, 100% { clip-path: inset(0 0 0 0); transform: translate(0); opacity: 0; }
+    }
+
+    @keyframes glitch-2 {
+      0%, 86% { clip-path: inset(0 0 0 0); transform: translate(0); opacity: 0; }
+      87% { clip-path: inset(40% 0 20% 0); transform: translate(4px, 0); opacity: 1; }
+      88% { clip-path: inset(5% 0 60% 0); transform: translate(-4px, 0); opacity: 1; }
+      89% { clip-path: inset(60% 0 15% 0); transform: translate(3px, 0); opacity: 1; }
+      90% { clip-path: inset(25% 0 40% 0); transform: translate(-2px, 0); opacity: 1; }
+      91% { clip-path: inset(0 0 0 0); transform: translate(0); opacity: 0; }
+      92%, 100% { clip-path: inset(0 0 0 0); transform: translate(0); opacity: 0; }
+    }
+
+    .name {
+      margin-top: 1rem;
+      font-size: 1rem;
+      color: rgba(80, 80, 80, 0.65);
+      letter-spacing: 0.15em;
+      font-weight: 300;
+    }
+
+    .links {
+      margin-top: 1.5rem;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .links a {
+      color: rgba(100, 100, 100, 0.5);
+      text-decoration: none;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+    }
+
+    .links a svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    .links a:hover {
+      color: #1a1a1a;
+    }
+
+    .section {
+      margin-top: 3rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: rgba(100, 100, 100, 0.5);
+      letter-spacing: 0.1em;
+    }
+
+    .section .label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      margin-bottom: 0.5rem;
+      color: rgba(100, 100, 100, 0.35);
+    }
+
+    .section .item {
+      position: relative;
+      display: inline-block;
+    }
+
+    .section .item a {
+      color: rgba(100, 100, 100, 0.5);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .section .item a:hover {
+      color: #1a1a1a;
+    }
+
+    .section .item .desc {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 1.6rem;
+      white-space: nowrap;
+      font-size: 0.7rem;
+      color: rgba(100, 100, 100, 0.35);
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+    }
+
+    .section .item:hover .desc {
+      opacity: 1;
+    }
+
+    .separator {
+      margin-top: 1.5rem;
+      margin-bottom: 1.5rem;
+      color: rgba(100, 100, 100, 0.2);
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+    }
+
+    .projects {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 600px) {
+      .domain {
+        font-size: 2rem;
+      }
+
+      .name {
+        font-size: 1.1rem;
+      }
+
+      .links {
+        gap: 2rem;
+      }
+
+      .links a svg {
+        width: 26px;
+        height: 26px;
+      }
+
+      .section {
+        font-size: 1rem;
+      }
+
+      .section .label {
+        font-size: 0.8rem;
+      }
+
+      .section .item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.3rem;
+      }
+
+      .section .item a {
+        padding: 0.4rem 0;
+      }
+
+      .section .item .desc {
+        position: static;
+        transform: none;
+        opacity: 1;
+        white-space: normal;
+        font-size: 0.8rem;
+      }
+
+      .separator {
+        font-size: 0.8rem;
+      }
+
+      .projects {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="domain">hhofner.com</div>
+  <div class="name">Hans Hofner</div>
+  <div class="links">
+    <a href="https://bsky.app/profile/hhofner.com" target="_blank" aria-label="Bluesky"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M5.202 2.857C7.954 4.922 10.913 9.11 12 11.358c1.087-2.247 4.046-6.436 6.798-8.501C20.783 1.366 24 .213 24 3.883c0 .732-.42 6.156-.667 7.037c-.856 3.061-3.978 3.842-6.755 3.37c4.854.826 6.089 3.562 3.422 6.299c-5.065 5.196-7.28-1.304-7.847-2.97c-.104-.305-.152-.448-.153-.327c0-.121-.05.022-.153.327c-.568 1.666-2.782 8.166-7.847 2.97c-2.667-2.737-1.432-5.473 3.422-6.3c-2.777.473-5.899-.308-6.755-3.369C.42 10.04 0 4.615 0 3.883c0-3.67 3.217-2.517 5.202-1.026"/></svg></a>
+    <a href="https://famichiki.jp/@slims" target="_blank" rel="me" aria-label="Mastodon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M23.268 5.313c-.35-2.578-2.617-4.61-5.304-5.004C17.51.242 15.792 0 11.813 0h-.03c-3.98 0-4.835.242-5.288.309C3.882.692 1.496 2.518.917 5.127C.64 6.412.61 7.837.661 9.143c.074 1.874.088 3.745.26 5.611c.118 1.24.325 2.47.62 3.68c.55 2.237 2.777 4.098 4.96 4.857c2.336.792 4.849.923 7.256.38q.398-.092.786-.213c.585-.184 1.27-.39 1.774-.753a.06.06 0 0 0 .023-.043v-1.809a.05.05 0 0 0-.02-.041a.05.05 0 0 0-.046-.01a20.3 20.3 0 0 1-4.709.545c-2.73 0-3.463-1.284-3.674-1.818a5.6 5.6 0 0 1-.319-1.433a.053.053 0 0 1 .066-.054c1.517.363 3.072.546 4.632.546c.376 0 .75 0 1.125-.01c1.57-.044 3.224-.124 4.768-.422q.059-.011.11-.024c2.435-.464 4.753-1.92 4.989-5.604c.008-.145.03-1.52.03-1.67c.002-.512.167-3.63-.024-5.545m-3.748 9.195h-2.561V8.29c0-1.309-.55-1.976-1.67-1.976c-1.23 0-1.846.79-1.846 2.35v3.403h-2.546V8.663c0-1.56-.617-2.35-1.848-2.35c-1.112 0-1.668.668-1.67 1.977v6.218H4.822V8.102q0-1.965 1.011-3.12c.696-.77 1.608-1.164 2.74-1.164c1.311 0 2.302.5 2.962 1.498l.638 1.06l.638-1.06c.66-.999 1.65-1.498 2.96-1.498c1.13 0 2.043.395 2.74 1.164q1.012 1.155 1.012 3.12z"/></svg></a>
+  </div>
+
+  <div class="section">
+    <div class="label">now</div>
+    <div class="item">
+      <a href="https://novapro.co.jp" target="_blank">novapro</a>
+      <span class="desc">cto</span>
+    </div>
+  </div>
+
+  <div class="separator">---</div>
+
+  <div class="section">
+    <div class="label">projects</div>
+    <div class="projects">
+      <div class="item">
+        <a href="https://famichiki.jp/@dailykanjibot" target="_blank">dailykanjibot</a>
+        <span class="desc">a daily kanji, every day</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
