@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>hhofner.com</title>
+  <meta name="description" content="Hans Hofner - CTO at Novapro">
+  <meta property="og:title" content="hhofner.com">
+  <meta property="og:description" content="Hans Hofner - CTO at Novapro">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hhofner.com">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="hhofner.com">
+  <meta name="twitter:description" content="Hans Hofner - CTO at Novapro">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='black'/></svg>">
+  <link rel="me" href="https://famichiki.jp/@slims">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: #f5f4f0;
+      font-family: 'Courier New', monospace;
+      transition: font-family 0.3s;
+    }
+
+    body.ja {
+      font-family: 'Noto Sans JP', sans-serif;
+    }
+
+    .lang-toggle {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      background: none;
+      border: none;
+      font-size: 0.8rem;
+      color: rgba(60, 60, 60, 0.45);
+      cursor: pointer;
+      font-family: 'Noto Sans JP', sans-serif;
+      letter-spacing: 0.1em;
+      transition: color 0.2s;
+    }
+
+    .lang-toggle:hover {
+      color: #1a1a1a;
+    }
+
+    .domain-banner {
+      background: #0a0a0a;
+      width: 100vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.2rem 0;
+    }
+
+    .domain {
+      font-size: 2.4rem;
+      color: #e8e8e8;
+      position: relative;
+      letter-spacing: 0.05em;
+      animation: base-glitch 3s infinite;
+      font-family: 'Courier New', monospace;
+    }
+
+    .domain::before,
+    .domain::after {
+      content: 'hhofner.com';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .domain::before {
+      color: rgba(255, 60, 100, 0.8);
+      animation: glitch-1 3s infinite;
+    }
+
+    .domain::after {
+      color: rgba(80, 180, 255, 0.8);
+      animation: glitch-2 3s infinite;
+    }
+
+    @keyframes base-glitch {
+      0%, 85%, 88%, 100% { transform: translate(0); }
+      86% { transform: translate(2px, -1px); }
+      87% { transform: translate(-1px, 1px); }
+    }
+
+    @keyframes glitch-1 {
+      0%, 85% { clip-path: inset(0 0 0 0); transform: translate(0); opacity: 0; }
+      86% { clip-path: inset(10% 0 30% 0); transform: translate(-4px, 0); opacity: 1; }
+      87% { clip-path: inset(50% 0 10% 0); transform: translate(4px, 0); opacity: 1; }
+      88% { clip-path: inset(20% 0 50% 0); transform: translate(-3px, 0); opacity: 1; }
+      89% { clip-path: inset(70% 0 5% 0); transform: translate(3px, 0); opacity: 1; }
+      90% { clip-path: inset(0 0 0 0); transform: translate(0); opacity: 0; }
+      91%, 100% { clip-path: inset(0 0 0 0); transform: translate(0); opacity: 0; }
+    }
+
+    @keyframes glitch-2 {
+      0%, 86% { clip-path: inset(0 0 0 0); transform: translate(0); opacity: 0; }
+      87% { clip-path: inset(40% 0 20% 0); transform: translate(4px, 0); opacity: 1; }
+      88% { clip-path: inset(5% 0 60% 0); transform: translate(-4px, 0); opacity: 1; }
+      89% { clip-path: inset(60% 0 15% 0); transform: translate(3px, 0); opacity: 1; }
+      90% { clip-path: inset(25% 0 40% 0); transform: translate(-2px, 0); opacity: 1; }
+      91% { clip-path: inset(0 0 0 0); transform: translate(0); opacity: 0; }
+      92%, 100% { clip-path: inset(0 0 0 0); transform: translate(0); opacity: 0; }
+    }
+
+    .name {
+      margin-top: 1rem;
+      font-size: 1rem;
+      color: rgba(60, 60, 60, 0.8);
+      letter-spacing: 0.15em;
+      font-weight: 300;
+      transition: letter-spacing 0.3s;
+    }
+
+    body.ja .name {
+      letter-spacing: 0.3em;
+    }
+
+    .links {
+      margin-top: 1.5rem;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .links a {
+      color: rgba(60, 60, 60, 0.65);
+      text-decoration: none;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+    }
+
+    .links a svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    .links a:hover {
+      color: #1a1a1a;
+    }
+
+    .section {
+      margin-top: 3rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: rgba(100, 100, 100, 0.5);
+      letter-spacing: 0.1em;
+    }
+
+    .section .label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      margin-bottom: 0.5rem;
+      color: rgba(100, 100, 100, 0.35);
+    }
+
+    body.ja .section .label {
+      text-transform: none;
+    }
+
+    .section .item {
+      position: relative;
+      display: inline-block;
+    }
+
+    .section .item a {
+      color: rgba(100, 100, 100, 0.5);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .section .item a:hover {
+      color: #1a1a1a;
+    }
+
+    .section .item .desc {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 1.6rem;
+      white-space: nowrap;
+      font-size: 0.8rem;
+      color: rgba(60, 60, 60, 0.6);
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+    }
+
+    .section .item:hover .desc {
+      opacity: 1;
+    }
+
+    .separator {
+      margin-top: 1.5rem;
+      margin-bottom: 1.5rem;
+      color: rgba(100, 100, 100, 0.2);
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+    }
+
+    .projects {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    [data-en], [data-ja] {
+      transition: opacity 0.2s;
+    }
+
+    .drop {
+      opacity: 0;
+      transform: translateY(-40px);
+      animation: gravity-drop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    .drop-1 { animation-delay: 0s; }
+    .drop-2 { animation-delay: 0.12s; }
+    .drop-3 { animation-delay: 0.24s; }
+    .drop-4 { animation-delay: 0.38s; }
+    .drop-5 { animation-delay: 0.5s; }
+    .drop-6 { animation-delay: 0.62s; }
+
+    @keyframes gravity-drop {
+      0% { opacity: 0; transform: translateY(-40px); }
+      60% { opacity: 1; transform: translateY(4px); }
+      80% { transform: translateY(-2px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      .domain {
+        font-size: 2rem;
+      }
+
+      .name {
+        font-size: 1.1rem;
+      }
+
+      .links {
+        gap: 2rem;
+      }
+
+      .links a svg {
+        width: 26px;
+        height: 26px;
+      }
+
+      .section {
+        font-size: 1rem;
+      }
+
+      .section .label {
+        font-size: 0.8rem;
+      }
+
+      .section .item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.3rem;
+      }
+
+      .section .item a {
+        padding: 0.4rem 0;
+      }
+
+      .section .item .desc {
+        position: static;
+        transform: none;
+        opacity: 1;
+        white-space: normal;
+        font-size: 0.8rem;
+      }
+
+      .separator {
+        font-size: 0.8rem;
+      }
+
+      .projects {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .lang-toggle {
+        font-size: 0.9rem;
+        bottom: 1rem;
+        right: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="domain-banner drop drop-1">
+    <div class="domain">hhofner.com</div>
+  </div>
+  <div class="name drop drop-2" data-en="Hans Hofner" data-ja="ハンス・ホフナー">Hans Hofner</div>
+  <div class="links drop drop-3">
+    <a href="https://bsky.app/profile/hhofner.com" target="_blank" aria-label="Bluesky"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M5.202 2.857C7.954 4.922 10.913 9.11 12 11.358c1.087-2.247 4.046-6.436 6.798-8.501C20.783 1.366 24 .213 24 3.883c0 .732-.42 6.156-.667 7.037c-.856 3.061-3.978 3.842-6.755 3.37c4.854.826 6.089 3.562 3.422 6.299c-5.065 5.196-7.28-1.304-7.847-2.97c-.104-.305-.152-.448-.153-.327c0-.121-.05.022-.153.327c-.568 1.666-2.782 8.166-7.847 2.97c-2.667-2.737-1.432-5.473 3.422-6.3c-2.777.473-5.899-.308-6.755-3.369C.42 10.04 0 4.615 0 3.883c0-3.67 3.217-2.517 5.202-1.026"/></svg></a>
+    <a href="https://famichiki.jp/@slims" target="_blank" rel="me" aria-label="Mastodon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M23.268 5.313c-.35-2.578-2.617-4.61-5.304-5.004C17.51.242 15.792 0 11.813 0h-.03c-3.98 0-4.835.242-5.288.309C3.882.692 1.496 2.518.917 5.127C.64 6.412.61 7.837.661 9.143c.074 1.874.088 3.745.26 5.611c.118 1.24.325 2.47.62 3.68c.55 2.237 2.777 4.098 4.96 4.857c2.336.792 4.849.923 7.256.38q.398-.092.786-.213c.585-.184 1.27-.39 1.774-.753a.06.06 0 0 0 .023-.043v-1.809a.05.05 0 0 0-.02-.041a.05.05 0 0 0-.046-.01a20.3 20.3 0 0 1-4.709.545c-2.73 0-3.463-1.284-3.674-1.818a5.6 5.6 0 0 1-.319-1.433a.053.053 0 0 1 .066-.054c1.517.363 3.072.546 4.632.546c.376 0 .75 0 1.125-.01c1.57-.044 3.224-.124 4.768-.422q.059-.011.11-.024c2.435-.464 4.753-1.92 4.989-5.604c.008-.145.03-1.52.03-1.67c.002-.512.167-3.63-.024-5.545m-3.748 9.195h-2.561V8.29c0-1.309-.55-1.976-1.67-1.976c-1.23 0-1.846.79-1.846 2.35v3.403h-2.546V8.663c0-1.56-.617-2.35-1.848-2.35c-1.112 0-1.668.668-1.67 1.977v6.218H4.822V8.102q0-1.965 1.011-3.12c.696-.77 1.608-1.164 2.74-1.164c1.311 0 2.302.5 2.962 1.498l.638 1.06l.638-1.06c.66-.999 1.65-1.498 2.96-1.498c1.13 0 2.043.395 2.74 1.164q1.012 1.155 1.012 3.12z"/></svg></a>
+  </div>
+
+  <div class="section drop drop-4">
+    <div class="label" data-en="now" data-ja="現在">now</div>
+    <div class="item">
+      <a href="https://novapro.co.jp" target="_blank">novapro</a>
+      <span class="desc" data-en="cto" data-ja="CTO">cto</span>
+    </div>
+  </div>
+
+  <div class="separator drop drop-5">---</div>
+
+  <div class="section drop drop-6">
+    <div class="label" data-en="projects" data-ja="プロジェクト">projects</div>
+    <div class="projects">
+      <div class="item">
+        <a href="https://famichiki.jp/@dailykanjibot" target="_blank">dailykanjibot</a>
+        <span class="desc" data-en="a daily kanji, every day" data-ja="毎日一つ、漢字をお届け">a daily kanji, every day</span>
+      </div>
+      <div class="item">
+        <a href="https://github.com/hhofner/wanitani" target="_blank">wanitani</a>
+        <span class="desc" data-en="TUI client for WaniKani" data-ja="WaniKani用TUIクライアント">TUI client for WaniKani</span>
+      </div>
+    </div>
+  </div>
+
+  <button class="lang-toggle" data-en="EN" data-ja="日本語" onclick="toggleLang()">日本語</button>
+
+  <script>
+    let lang = 'en';
+
+    function toggleLang() {
+      lang = lang === 'en' ? 'ja' : 'en';
+      document.body.classList.toggle('ja', lang === 'ja');
+      document.documentElement.lang = lang;
+
+      document.querySelectorAll('[data-en][data-ja]').forEach(el => {
+        el.textContent = el.dataset[lang];
+      });
+    }
+  </script>
+</body>
+</html>
