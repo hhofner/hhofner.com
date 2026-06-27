@@ -1,42 +1,213 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title></title>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link href="css/style.css" rel="stylesheet">
-		<style>
-		    * {
-				margin: 0; 
-				padding: 0; 
-				box-sizing: border-box;
-				font-family: sans-serif;
-			 }
-			 main {
-				 padding: 5rem 0.5rem;
-				 max-width: 500px;
-				 margin: 0 auto;
-			 }
-			 
-			 #pic-container {
-				 img {
-					 max-width: 500px;
-					 height: 500px;
-					 object-fit: contain;
-				 }
-			 }
-		</style>
-	</head>
-	<body>
-		<nav></nav>
-		<main>
-			<h1>Hans Hofner</h1>
-			<div id="pic-container">
-				<img src="./me.JPG" alt="Picture of me staring into the camera, background is blue sky with no clouds" />
+
+<head>
+	<title></title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="css/style.css" rel="stylesheet">
+	<link rel="preload" href="/fonts/ClashDisplay-Variable.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="/fonts/Archivo-Variable.woff2" as="font" type="font/woff2" crossorigin>
+	<style>
+		@font-face {
+			font-family: 'Clash Display';
+			src: url('/fonts/ClashDisplay-Variable.woff2') format('woff2');
+			font-weight: 200 700;
+			font-display: swap;
+			font-style: normal;
+		}
+
+		@font-face {
+			font-family: 'Archivo';
+			src: url('/fonts/Archivo-Variable.woff2') format('woff2');
+			font-weight: 100 900;
+			font-display: swap;
+			font-style: normal;
+		}
+
+		@font-face {
+			font-family: 'Archivo';
+			src: url('/fonts/Archivo-VariableItalic.woff2') format('woff2');
+			font-weight: 100 900;
+			font-display: swap;
+			font-style: italic;
+		}
+
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			font-family: 'Archivo', sans-serif;
+		}
+
+		html {}
+
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			font-family: 'Clash Display', sans-serif;
+			color: green;
+		}
+
+		h1 {
+			font-weight: 600;
+			line-height: 2.5rem;
+			font-size: 3rem;
+		}
+
+		main {
+			padding: 2rem 0;
+			max-width: 800px;
+			margin: 0 auto;
+
+			*:not(:last-child) {
+				margin-bottom: 1rem;
+			}
+		}
+
+		.profile-container {
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+		}
+
+		.pic-container {
+			width: 200px;
+			height: 200px;
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover
+			}
+		}
+
+		.link-container {
+			border: 1px dashed;
+			border-color: lightgrey;
+			border-radius: 6px;
+			padding: 1rem 2rem;
+			margin: 0 1rem;
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			gap: 0.25rem 1.5rem;
+		}
+
+		.link-container>* {
+			margin-bottom: 0 !important;
+		}
+
+		.bsky-link {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.4rem;
+		}
+
+		.clip-circle {
+			clip-path: circle(50% at 50% 50%);
+		}
+
+		a {
+			color: green;
+			text-decoration-style: wavy;
+			text-decoration-thickness: 1.1px;
+			text-decoration-color: currentColor;
+		}
+	</style>
+</head>
+
+<body>
+	<nav></nav>
+	<main class="main-container">
+		<div class="profile-container">
+			<div class="pic-container clip-circle">
+				<img class="round-crop" src="./me.JPG"
+					alt="Picture of me staring into the camera, background is blue sky with no clouds" />
 			</div>
+			<h1>Hans Hofner</h1>
+		</div>
+		<div class="link-container">
 			<p>Hey, <a href="https://www.youtube.com/watch?v=bMhDJ0S0OBA">it's me!</a>
 			</p>
-			<a href="https://lichess.org/@/throwawaycompiler" >Contact me here</a>
-		</main>
-	</body>
+			<p>My latest blunder: <a id="blunder-link" href="https://lichess.org/@/throwawaycompiler">…</a></p>
+			<!-- arcticons:bluesky -->
+			<a class="bsky-link" href="https://bsky.app/profile/hhofner.com">
+				contact me at
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+					viewBox="0 0 48 48"><!-- Icon from Arcticons by Donnnno - https://creativecommons.org/licenses/by-sa/4.0/ -->
+					<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+						d="M24 32.19c0-.196.075.025.237.5c.874 2.577 4.289 12.631 12.096 4.593c4.111-4.232 2.208-8.463-5.275-9.741c4.28.73 9.094-.477 10.414-5.212c.38-1.362 1.028-9.752 1.028-10.885c0-5.676-4.96-3.892-8.02-1.587c-4.242 3.195-8.805 9.673-10.48 13.15c-1.675-3.477-6.238-9.954-10.48-13.15C10.46 7.553 5.5 5.77 5.5 11.445c0 1.133.647 9.523 1.028 10.885c1.32 4.735 6.133 5.943 10.414 5.212c-7.483 1.278-9.386 5.51-5.275 9.741c7.807 8.038 11.222-2.016 12.096-4.592c.162-.476.237-.697.237-.501" />
+				</svg>
+				bluesky
+			</a>
+		</div>
+	</main>
+
+	<footer style="text-align: center; padding: 2rem 0;">
+		<img src="./helix-88x31.webp" width="88" height="31" alt="Made with Helix" />
+	</footer>
+
+	<script>
+		(async () => {
+			const username = 'throwawaycompiler';
+			const link = document.getElementById('blunder-link');
+
+			function findLatestBlunder(pgn, user) {
+				const wm = pgn.match(/\[White\s+"([^"]*)"\]/i);
+				const userIsWhite = !!(wm && wm[1].toLowerCase() === user.toLowerCase());
+				const mine = (ply) => userIsWhite ? (ply % 2 === 1) : (ply % 2 === 0);
+				const movetext = pgn.replace(/\[[^\]]*\]/g, ' ');
+				const tokens = movetext.match(/\{[^}]*\}|\(|\)|\d+\.(?:\.\.)?|\$\d+|1-0|0-1|1\/2-1\/2|\*|[^\s(){}]+/g) || [];
+				let ply = 0, depth = 0, pending = null, blunder = null;
+				for (const t of tokens) {
+					if (t === '(') {depth++; continue;}     // enter variation
+					if (t === ')') {depth--; continue;}     // exit variation
+					if (depth > 0) continue;                  // ignore hypothetical lines
+					if (t[0] === '{') {                       // comment
+						if (pending && mine(pending.ply) && /blunder/i.test(t)) blunder = pending;
+					} else if (/^\d+\.(?:\.\.)?$/.test(t)) {  // move number
+						continue;
+					} else if (/^(?:1-0|0-1|1\/2-1\/2|\*)$/.test(t)) { // result
+						continue;
+					} else if (/^\$\d+$/.test(t)) {           // NAG ($4 = blunder)
+						if (t === '$4' && pending && mine(pending.ply)) blunder = pending;
+					} else {                                  // a move (SAN)
+						ply++;
+						pending = {san: t.replace(/[?!]+$/, ''), ply};
+						if (t.includes('??') && mine(ply)) blunder = pending;
+					}
+				}
+				return blunder;
+			}
+
+			try {
+				const url = `https://lichess.org/api/games/user/${username}` +
+					'?max=15&analysed=1&moves=1&pgnInJson=1&evals=1&literate=1';
+				const res = await fetch(url, {headers: {'Accept': 'application/x-ndjson'}});
+				const games = (await res.text()).trim().split('\n').filter(Boolean).map(JSON.parse);
+
+				let found = null;
+				for (const game of games) {
+					const blunder = findLatestBlunder(game.pgn || '', username);
+					if (blunder) {found = {game, blunder}; break;}
+				}
+
+				if (found) {
+					link.textContent = found.blunder.san;
+					link.href = `https://lichess.org/${found.game.id}#${found.blunder.ply}`;
+				} else {
+					link.textContent = 'none lately (suspicious)';
+					link.href = `https://lichess.org/@/${username}`;
+				}
+			} catch (e) {
+				link.textContent = 'unavailable';
+			}
+		})();
+	</script>
+</body>
+
 </html>
